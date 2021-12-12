@@ -1,10 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
-import Header from './components/Header.js'
-import Footer from './components/Footer.js'
-import HomeScreen from './screens/HomeScreen.js'
-import ProductScreen from './screens/ProductScreen.js'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import HomeScreen from './screens/HomeScreen'
+import ProductScreen from './screens/ProductScreen'
+import CardScreen from './screens/CardScreen'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Container>
           <Route path='/' component={HomeScreen} exact />
           <Route path='/product/:id' component={ProductScreen} />
+          <Route path='/card/:id?' component={CardScreen} />
         </Container>
       </main>
       <Footer />
