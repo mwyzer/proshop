@@ -8,7 +8,7 @@ import Loader from '../components/Rating'
 import { listProductDetails } from '../actions/productActions'
 
 const ProductScreen = ({ history, match }) => {
-    const [qty, setQty] = useState(0)
+    const [qty, setQty] = useState(1)
 
     const dispatch = useDispatch()
 
@@ -34,6 +34,7 @@ const ProductScreen = ({ history, match }) => {
                 <Message variant='danger'>{error}</Message>
             ) : (
                 <>
+
                     <Row>
                         <Col md={6}>
                             <Image src={product.image} alt={product.name} fluid />
