@@ -29,8 +29,9 @@ const CartScreen = ({ match, location, history }) => {
         history.push('/login?redirect=shipping')
     }
 
-    return <Row>
-        <Col md={8}>
+    return (
+        <Row>
+            <Col md={8}>
             <h1>Shopping Cart</h1>
             {cartItems.length === 0 ?
                 (
@@ -53,7 +54,11 @@ const CartScreen = ({ match, location, history }) => {
                                         <Form.Control
                                             as='select'
                                             value={item.qty}
-                                            onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
+                                            onChange={(e) => 
+                                                dispatch(
+                                                    addToCart(item.product, Number(e.target.value))
+                                                )
+                                            }
                                         >
                                             {[...Array(item.countInStock).keys()].map((x) => (
                                                 <option key={x + 1} value={x + 1}>
@@ -63,18 +68,21 @@ const CartScreen = ({ match, location, history }) => {
                                         </Form.Control>
                                     </Col>
                                     <Col md={2}>
-                                        <Button type='button' variant='light' onClick={() => removeFromCartHandler(item.product)}>
+                                        <Button 
+                                            type='button' 
+                                            variant='light' 
+                                            onClick={() => removeFromCartHandler(item.product)}
+                                        >
                                             <i className='fas fa-trash'></i>
                                         </Button>
                                     </Col>
-
                                 </Row>
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
                 )}
-        </Col>
-        <Col md={4}>
+            </Col>
+            <Col md={4}>
             <Card>
                 <ListGroup variant='flush'>
                     <ListGroup.Item>
@@ -89,16 +97,19 @@ const CartScreen = ({ match, location, history }) => {
                         }
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <Button type='button' className='btn-block' disabled={cartItems.length === 0} onClick={checkoutHandler}>
+                        <Button 
+                            type='button' 
+                            className='btn-block' 
+                            disabled={cartItems.length === 0} 
+                            onClick={checkOutHandler}>
                             Proceed to CheckOut
                         </Button>
                     </ListGroup.Item>
                 </ListGroup>
             </Card>
-        </Col>
-
-    </Row >
-
+            </Col>
+        </Row>
+    )
 }
 
 export default CartScreen
